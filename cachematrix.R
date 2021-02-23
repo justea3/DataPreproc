@@ -1,34 +1,12 @@
-## Put comments here that give an overall description of what your
-## functions do
+f4<-read.csv("data6089.csv")
+f5<-read.csv("data9013.csv")
 
-## Write a short comment describing this function
-makeCacheMatrix <- function(x = matrix()) {
-        m <- NULL
-        set <- function(y) {
-            x <<- y
-            m <<- NULL
-        }
-        get <- function() x
-        setinverse <- function(inverse) m <<- inverse 
-        getinverse <- function() m
-        list(set = set,
-             get = get,
-             setinverse = setinverse,
-             getinverse = getinverse)
-    }
+view(f4)
+view(f5)
 
-## Write a short comment describing this function
 
-cacheSolve <- function(x, ...) {
-    ## Return a matrix that is the inverse of 'x'
-    m <- x$getinverse()
-    if (!is.null(m)) {
-        message("getting cached data")
-        return(m)
-    }
-    data <- x$get()
-    m <- solve(data, ...)
-    x$setinverse(m)
-    m
-}
+data<-merge(f4,f5, all = TRUE)
+view(data)
+write.csv(data,"data.csv")
+
 
